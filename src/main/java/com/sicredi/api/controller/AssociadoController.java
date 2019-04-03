@@ -35,7 +35,7 @@ public class AssociadoController {
 		}
 
 		Associado associadoCadastrado = associadoService.cadastrar(Associado.builder()
-				.nome(associadoDto.getNome()).login(associadoDto.getLogin()).senha(associadoDto.getSenha()).build());
+				.nome(associadoDto.getNome()).build());
 		response.setData(associadoCadastrado);
 		return ResponseEntity.ok(response);
 	}

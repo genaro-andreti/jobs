@@ -1,4 +1,4 @@
-package com.sicredi.api.service;
+package com.sicredi.api.service.impl;
 
 import java.util.Optional;
 
@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.sicredi.api.exception.PautaNaoCadastradoException;
 import com.sicredi.api.model.SessaoVotacao;
 import com.sicredi.api.repository.SessaoVotacaoRepository;
+import com.sicredi.api.service.PautaService;
+import com.sicredi.api.service.SessaoVotacaoService;
 
 @Service
 public class SessaoVotacaoServiceImpl implements SessaoVotacaoService {

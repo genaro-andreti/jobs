@@ -26,7 +26,7 @@ public class AssociadoServiceTest {
 	@Test
 	public void quandoInserimosUmAssociado() {
 
-		Associado associadoMock = Associado.builder().id(1l).nome("Genaro").login("genaro").senha("senha")
+		Associado associadoMock = Associado.builder().id(1l).nome("Genaro")
 				.build();
 
 		Mockito.when(associadoService.cadastrar(associadoMock)).thenReturn(associadoMock);
@@ -35,8 +35,6 @@ public class AssociadoServiceTest {
 
 		Assertions.assertThat(associado.getId()).isEqualTo(associadoMock.getId());
 		Assertions.assertThat(associado.getNome()).isEqualTo(associadoMock.getNome());
-		Assertions.assertThat(associado.getLogin()).isEqualTo(associadoMock.getLogin());
-		Assertions.assertThat(associado.getSenha()).isEqualTo(associadoMock.getSenha());
 	}
 
 }

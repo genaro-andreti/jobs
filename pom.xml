@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sicredi</groupId>
-	<artifactId>projeto-sicredi</artifactId>
+	<artifactId>jobs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>projeto-sicredi</name>
+	<name>jobs</name>
 	<description>Projeto Sicredi</description>
 
 	<properties>

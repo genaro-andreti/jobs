@@ -33,10 +33,4 @@ public class Associado implements Serializable {
 	@Column(name = "nome", nullable = false)
 	private String nome;
 
-	@Column(name = "login", nullable = false)
-	private String login;
-
-	@Column(name = "senha", nullable = false)
-	private String senha;
-
 }

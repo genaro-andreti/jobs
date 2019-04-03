@@ -1,4 +1,4 @@
-package com.sicredi.api.service;
+package com.sicredi.api.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +17,10 @@ import com.sicredi.api.exception.VotoAssociadoCadastradoParaPautaException;
 import com.sicredi.api.model.SessaoVotacao;
 import com.sicredi.api.model.Voto;
 import com.sicredi.api.repository.VotoRepository;
+import com.sicredi.api.service.AssociadoService;
+import com.sicredi.api.service.PautaService;
+import com.sicredi.api.service.SessaoVotacaoService;
+import com.sicredi.api.service.VotoService;
 
 @Service
 public class VotoServiceImpl implements VotoService {
