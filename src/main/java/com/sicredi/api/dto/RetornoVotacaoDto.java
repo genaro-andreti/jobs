@@ -29,33 +29,29 @@ public class RetornoVotacaoDto {
 	private Integer qtdVotosFavoraveis = 0;
 	private Integer qtdVotosContra = 0;
 	private String resultadoVotacao;
-	
+
 	public RetornoVotacaoDto(List<Voto> votos) {
 		if (!CollectionUtils.isEmpty(votos)) {
 			Pauta pauta = votos.get(0).getSessaoVotacao().getPauta();
 			setIdPauta(pauta.getId());
 			setDescricaoPauta(pauta.getDescricao());
-			
-			this.votosDto = CollectionUtils.isEmpty(this.votosDto) ? new ArrayList<RetornoVotoDto>() : this.votosDto;
 
-			votos.stream()
-					.forEach(voto -> getVotosDto().add(RetornoVotoDto.builder()
-							.idAssociado(voto.getAssociado().getId()).nomeAssociado(voto.getAssociado().getNome())
-							.idSessaoVotacao(voto.getSessaoVotacao().getId())
-							.inicioSessaoVotacao(voto.getSessaoVotacao().getInicioSessaoVotacao().format(FORMATTER))
-							.fimSessaoVotacao(voto.getSessaoVotacao().getFimSessaoVotacao().format(FORMATTER))
-							.decisao(voto.getDecisaoVoto().getValor()).build()));
+			this.votosDto = CollectionUtils.isEmpty(this.votosDto) ? new ArrayList<RetornoVotoDto>() : this.votosDto;
 		}
-		if(!CollectionUtils.isEmpty(getVotosDto())) {
-			getVotosDto().forEach(voto -> {
-				if(VotoEnum.SIM.getValor().equals(voto.getDecisao())) {
-					this.qtdVotosFavoraveis++;
-				} else {
-					this.qtdVotosContra++;
-				}
-			});
-			setResultadoVotacao(this.qtdVotosFavoraveis > this.qtdVotosContra ? PAUTA_APROVADA : PAUTA_REPROVADA);
-		}
+		votos.forEach(voto -> {
+			getVotosDto().add(RetornoVotoDto.builder().idAssociado(voto.getAssociado().getId())
+					.nomeAssociado(voto.getAssociado().getNome()).idSessaoVotacao(voto.getSessaoVotacao().getId())
+					.inicioSessaoVotacao(voto.getSessaoVotacao().getInicioSessaoVotacao().format(FORMATTER))
+					.fimSessaoVotacao(voto.getSessaoVotacao().getFimSessaoVotacao().format(FORMATTER))
+					.decisao(voto.getDecisaoVoto().getValor()).build());
+
+			if (VotoEnum.SIM.getValor().equals(voto.getDecisaoVoto().getValor())) {
+				this.qtdVotosFavoraveis++;
+			} else {
+				this.qtdVotosContra++;
+			}
+		});
+		setResultadoVotacao(this.qtdVotosFavoraveis > this.qtdVotosContra ? PAUTA_APROVADA : PAUTA_REPROVADA);
 	}
 
 }
